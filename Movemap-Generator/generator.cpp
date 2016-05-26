@@ -287,7 +287,7 @@ int main(int argc, char** argv)
     showWebsiteBanner();
 
     int mapnum = -1;
-    float maxAngle = 60.0f;
+    float maxAngle = 85.0f;
     int tileX = -1, tileY = -1;
     bool skipLiquid = false,
          skipContinents = false,
@@ -327,11 +327,11 @@ int main(int argc, char** argv)
 
     ACE_Time_Value elapsed;
     ACE_High_Res_Timer timer;
-    
+
     timer.start();
     if (tileX > -1 && tileY > -1 && mapnum >= 0)
         { builder.buildSingleTile(mapnum, tileX, tileY); }
-    else 
+    else
     {
         if (num_threads && builder.activate(num_threads)== -1)
         {
@@ -350,6 +350,6 @@ int main(int argc, char** argv)
     timer.stop();
     timer.elapsed_time(elapsed);
     printf(" \n Total build time: %ld seconds\n\n", elapsed.sec());
-    
+
     return silent ? 1 : finish(" Movemap build is complete! Press enter to exit\n", 1);
 }

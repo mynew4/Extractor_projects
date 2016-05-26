@@ -84,7 +84,7 @@ namespace MMAP
         int result = -1;
         m_numThreads = num_threads;
         m_threadPool = new TileThreadPool();
-        
+
         if (m_threadPool && m_numThreads && !m_poolActivated)
         {
             result = m_threadPool->start(m_numThreads);
@@ -181,7 +181,7 @@ namespace MMAP
             if (!shouldSkipMap(mapID,m_skipContinents,m_skipJunkMaps,m_skipBattlegrounds))
               { buildMap(mapID, false); }
         }
-        
+
         if (activated())
         {
             Tile_Message_Block *finish_mb = new Tile_Message_Block(NULL);
@@ -226,7 +226,7 @@ namespace MMAP
         }
 
         if (activated())
-          { dtFreeNavMesh(navMesh); }  // each tile will get it's own pointer to navMesh 
+          { dtFreeNavMesh(navMesh); }  // each tile will get it's own pointer to navMesh
 
         // now start building/scheduling mmtiles for each tile
         printf(" %s map %03u [%u tiles]\n", activated() ? "Scheduling" : "Building", mapID, (unsigned int)tiles->size());
@@ -490,8 +490,8 @@ namespace MMAP
         config.walkableRadius = m_bigBaseUnit ? 1 : 2;
         config.borderSize = config.walkableRadius + 3;
         config.maxEdgeLen = VERTEX_PER_TILE + 1;        //anything bigger than tileSize
-        config.walkableHeight = m_bigBaseUnit ? 3 : 6;
-        config.walkableClimb = m_bigBaseUnit ? 2 : 4;   // keep less than walkableHeight
+        config.walkableHeight = m_bigBaseUnit ? 2 : 4;
+        config.walkableClimb = m_bigBaseUnit ? 3 : 6;   // keep less than walkableHeight
         config.minRegionArea = rcSqr(60);
         config.mergeRegionArea = rcSqr(50);
         config.maxSimplificationError = 2.0f;       // eliminates most jagged edges (tinny polygons)

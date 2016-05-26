@@ -101,7 +101,7 @@ namespace MMAP
              * @param offMeshFilePath
              */
             MapBuilder(const char* magic,
-                       float maxWalkableAngle   = 60.f,
+                       float maxWalkableAngle   = 85.f,
                        bool skipLiquid          = false,
                        bool skipContinents      = false,
                        bool skipJunkMaps        = true,
@@ -137,9 +137,9 @@ namespace MMAP
              *
              */
             void buildAllMaps();
-            
+
             int activate(int num_threads);
-            
+
             bool activated() const { return m_poolActivated; }
 
             /**
@@ -245,7 +245,7 @@ namespace MMAP
             int             m_numThreads;
             TileThreadPool* m_threadPool;
             bool            m_poolActivated;
-            
+
             rcContext* m_rcContext; /**< build performance - not really used for now */
     };
 }
